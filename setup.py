@@ -7,7 +7,7 @@ setup(
     name='btc-address-dump',
     version='0.4.1',
     author='cig01',
-    url='https://github.com/10gic/btc-address-dump',
+    url='https://github.com/mrtruongleo/btc-address-dump',
     license='MIT License',
     description='A utility for dump btc address from mnemonic words or private key or public key',
     long_description=open('README.rst').read(),
