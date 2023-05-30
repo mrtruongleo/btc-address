@@ -38,7 +38,7 @@ def get_derivation_path(coins_info, chain: str, typ: str) -> Union[str, None]:
     return derivation_path
 
 
-def main_entry(argv):
+def get_addr(*argv):
     mnemonic = ''
     private_key = b''
     private_key_wif = b''
@@ -79,7 +79,7 @@ def main_entry(argv):
         default="bip44",
         dest="derivation")
     parser.add_argument("inputs", metavar="mnemonic-words|private-key|public-key")
-    args = parser.parse_args(argv[1:])
+    args = parser.parse_args(argv)
     chain = args.chain
     derivation = args.derivation
     inputs = args.inputs
@@ -293,11 +293,10 @@ def main_entry(argv):
             public_key_x_coordinate = public_key_compressed[1:33]
             taproot_tweaked_public_key = p2tr_util.public_key_x_coordinate_to_taproot_tweaked_pubkey(public_key_x_coordinate)
             addr_p2tr = p2wpkh_util.pubkey_to_segwit_v1_addr(human_readable_part, taproot_tweaked_public_key)
-    else:
-        sys.stderr.write("invalid input: {0}\n".format(inputs))
-        sys.exit(1)
-
-    if mnemonic:
+    # else:
+    #     sys.stderr.write("invalid input: {0}\n".format(inputs))
+    #     sys.exit(1)
+    if mnemonic:        
         print("mnemonic = {}".format(mnemonic))
     if private_key:
         print("private key (hex) = {}".format(private_key.hex()))
@@ -345,6 +344,27 @@ def main_entry(argv):
     if addr_p2tr:
         print("bech32m address (p2tr) = {}".format(addr_p2tr))
 
+    final = {
+            'mnemonic': mnemonic,
+            'private_key_hex': private_key.hex() or None,
+            'private_key_wif': private_key_wif.decode('ascii') or None,
+            'private_key_wif_compressed': private_key_wif_compressed.decode('ascii') or None,
+            'taproot_tweaked_private_key': taproot_tweaked_private_key.hex() or None,
+            'public_key_uncompressed': public_key_uncompressed.hex() or None,
+            'public_key_compressed': public_key_compressed.hex() or None,
+            'public_key_uncompressed_hash160': public_key_uncompressed_hash160.hex() or None,
+            'public_key_compressed_hash160': public_key_compressed_hash160.hex() or None,
+            'public_key_hash160': public_key_hash160.hex() or None,            
+            'addr_p2pkh_uncompressed': addr_p2pkh_uncompressed.decode('ascii') or None,
+            'addr_p2pkh_compressed': addr_p2pkh_compressed.decode('ascii') or None,
+            'addr_p2pkh': addr_p2pkh.decode('ascii') or None,
+            'addr_p2sh_p2wpkh': addr_p2sh_p2wpkh.decode('ascii') or None,
+            'addr_p2wpkh': addr_p2wpkh or None,
+            'taproot_tweaked_public_key': taproot_tweaked_public_key.hex() or None,
+            'addr_p2tr': addr_p2tr or None
 
-if __name__ == '__main__':
-    main_entry(sys.argv)
+        }
+    return final
+
+#if __name__ == '__main__':
+    #main_entry(*args)
