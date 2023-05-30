@@ -296,53 +296,53 @@ def get_addr(*argv):
     # else:
     #     sys.stderr.write("invalid input: {0}\n".format(inputs))
     #     sys.exit(1)
-    if mnemonic:        
-        print("mnemonic = {}".format(mnemonic))
-    if private_key:
-        print("private key (hex) = {}".format(private_key.hex()))
-    if private_key_wif:
-        print("private key (WIF) = {}".format(private_key_wif.decode('ascii')))
-    if private_key_wif_compressed:
-        print("private key (WIF compressed) = {}".format(private_key_wif_compressed.decode('ascii')))
-    if taproot_tweaked_private_key:
-        print("taproot tweaked private key = {}".format(taproot_tweaked_private_key.hex()))
-    if public_key_uncompressed:
-        print("public key (uncompressed) = {}".format(public_key_uncompressed.hex()))
-    if public_key_compressed:
-        print("public key (compressed) = {}".format(public_key_compressed.hex()))
-    if public_key_uncompressed_hash160:
-        print("hash160 of uncompressed public key = {}".format(public_key_uncompressed_hash160.hex()))
-    if public_key_compressed_hash160:
-        print("hash160 of compressed public key = {}".format(public_key_compressed_hash160.hex()))
-    if public_key_hash160:
-        print("hash160 of public key = {}".format(public_key_hash160.hex()))
-    if taproot_tweaked_public_key:
-        print("taproot tweaked public key (taproot output key) = {}".format(taproot_tweaked_public_key.hex()))
-    if addr_p2pkh_uncompressed:
-        print("legacy address (p2pkh uncompressed) = {}".format(addr_p2pkh_uncompressed.decode('ascii')))
-        if chain == "bch":
-            print("bitcoin cash address (p2pkh uncompressed) = {}".format(cashaddress.convert.to_cash_address(addr_p2pkh_uncompressed.decode('ascii'))))
-    if addr_p2pkh_compressed:
-        print("legacy address (p2pkh compressed) = {}".format(addr_p2pkh_compressed.decode('ascii')))
-        if chain == "bch":
-            print("bitcoin cash address (p2pkh compressed) = {}".format(cashaddress.convert.to_cash_address(addr_p2pkh_compressed.decode('ascii'))))
-    if addr_p2pkh:
-        print("legacy address (p2pkh) = {}".format(addr_p2pkh.decode('ascii')))
-        if chain == "bch":
-            print("bitcoin cash address (p2pkh) = {}".format(cashaddress.convert.to_cash_address(addr_p2pkh.decode('ascii'))))
-    if addr_p2sh_p2wpkh:
-        if public_key_hash160:
-            print("p2sh-segwit address (only valid if input is hash160 of COMPRESSED public key) = {}".format(
-                addr_p2sh_p2wpkh.decode('ascii')))
-        else:
-            print("p2sh-segwit address (p2sh p2wpkh) = {}".format(addr_p2sh_p2wpkh.decode('ascii')))
-    if addr_p2wpkh:
-        if public_key_hash160:
-            print("bech32 address (only valid if input is hash160 of COMPRESSED public key) = {}".format(addr_p2wpkh))
-        else:
-            print("bech32 address (p2wpkh) = {}".format(addr_p2wpkh))
-    if addr_p2tr:
-        print("bech32m address (p2tr) = {}".format(addr_p2tr))
+#     if mnemonic:        
+#         print("mnemonic = {}".format(mnemonic))
+#     if private_key:
+#         print("private key (hex) = {}".format(private_key.hex()))
+#     if private_key_wif:
+#         print("private key (WIF) = {}".format(private_key_wif.decode('ascii')))
+#     if private_key_wif_compressed:
+#         print("private key (WIF compressed) = {}".format(private_key_wif_compressed.decode('ascii')))
+#     if taproot_tweaked_private_key:
+#         print("taproot tweaked private key = {}".format(taproot_tweaked_private_key.hex()))
+#     if public_key_uncompressed:
+#         print("public key (uncompressed) = {}".format(public_key_uncompressed.hex()))
+#     if public_key_compressed:
+#         print("public key (compressed) = {}".format(public_key_compressed.hex()))
+#     if public_key_uncompressed_hash160:
+#         print("hash160 of uncompressed public key = {}".format(public_key_uncompressed_hash160.hex()))
+#     if public_key_compressed_hash160:
+#         print("hash160 of compressed public key = {}".format(public_key_compressed_hash160.hex()))
+#     if public_key_hash160:
+#         print("hash160 of public key = {}".format(public_key_hash160.hex()))
+#     if taproot_tweaked_public_key:
+#         print("taproot tweaked public key (taproot output key) = {}".format(taproot_tweaked_public_key.hex()))
+#     if addr_p2pkh_uncompressed:
+#         print("legacy address (p2pkh uncompressed) = {}".format(addr_p2pkh_uncompressed.decode('ascii')))
+#         if chain == "bch":
+#             print("bitcoin cash address (p2pkh uncompressed) = {}".format(cashaddress.convert.to_cash_address(addr_p2pkh_uncompressed.decode('ascii'))))
+#     if addr_p2pkh_compressed:
+#         print("legacy address (p2pkh compressed) = {}".format(addr_p2pkh_compressed.decode('ascii')))
+#         if chain == "bch":
+#             print("bitcoin cash address (p2pkh compressed) = {}".format(cashaddress.convert.to_cash_address(addr_p2pkh_compressed.decode('ascii'))))
+#     if addr_p2pkh:
+#         print("legacy address (p2pkh) = {}".format(addr_p2pkh.decode('ascii')))
+#         if chain == "bch":
+#             print("bitcoin cash address (p2pkh) = {}".format(cashaddress.convert.to_cash_address(addr_p2pkh.decode('ascii'))))
+#     if addr_p2sh_p2wpkh:
+#         if public_key_hash160:
+#             print("p2sh-segwit address (only valid if input is hash160 of COMPRESSED public key) = {}".format(
+#                 addr_p2sh_p2wpkh.decode('ascii')))
+#         else:
+#             print("p2sh-segwit address (p2sh p2wpkh) = {}".format(addr_p2sh_p2wpkh.decode('ascii')))
+#     if addr_p2wpkh:
+#         if public_key_hash160:
+#             print("bech32 address (only valid if input is hash160 of COMPRESSED public key) = {}".format(addr_p2wpkh))
+#         else:
+#             print("bech32 address (p2wpkh) = {}".format(addr_p2wpkh))
+#     if addr_p2tr:
+#         print("bech32m address (p2tr) = {}".format(addr_p2tr))
 
     final = {
             'mnemonic': mnemonic,
